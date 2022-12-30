@@ -1,0 +1,59 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 64px;
+}
+
+.topSection{
+    padding-top: 16px;
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.messageSection{
+    font-size: 24px;
+}
+
+.scoreSection{
+    font-size: 32px;
+}
+
+.scoreBoard{
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.playerScore, .computerScore{
+    padding: 16px;
+    border-style: solid;
+    border-color: black;
+}
+
+
+.windows{
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+
+.window{
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border-style: solid;
+    border-color: #3882F6;
+    border-radius: 16px;
+}
+

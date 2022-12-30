@@ -66,5 +66,5 @@ function game(){
         console.log(`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
     }
 }
-game();
+// game();
 
