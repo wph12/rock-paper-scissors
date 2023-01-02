@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
     <link rel = "stylesheet" href = "styles.css">
+    <script src = "script.js" defer></script>
+
 </head>
 <body>
-    <script src = "script.js"></script>
     <div class = "container">
         <div class = "topSection">
             Rock, Paper, Scissors!
@@ -18,22 +19,20 @@
             Please make a selection to start a game. First to reach 3 points wins!
         </div>
 
-       
-
         <div class = "choiceSection">
-            <div class = windows>
-                <div class = window>rock</div>
-                <div class = window>paper</div>
-                <div class = window>scissors</div>
+            <div class = "windows">
+                <div class = "window" id = 'rock'>rock</div>
+                <div class = "window" id = 'paper'>paper</div>
+                <div class = "window" id = 'scissors'>scissors</div>
             </div>
         </div>
 
         <div class = "scoreSection">
             Score:
-            <div class = scoreBoard>
-                <div class = playerScore>0</div> 
+            <div class = "scoreBoard">
+                <div class = "playerScore">0</div> 
                 -
-                <div class = computerScore>0</div>
+                <div class = "computerScore">0</div>
             </div>
         </div>
 

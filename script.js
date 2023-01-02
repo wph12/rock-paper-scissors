@@ -47,6 +47,7 @@ function playRound(playerSelection, computerSelection){
 function game(){
     playerScore = 0;
     computerScore = 0;
+    console.log("Welcome to the arena!")
     while(playerScore < 3 && computerScore < 3){
         let playerSelection = prompt("Please choose rock, paper or scissors: ") //defaults to scissors if wrong choice
         let computerSelection = getComputerChoice();
@@ -66,5 +67,14 @@ function game(){
         console.log(`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
     }
 }
-// game();
 
+
+
+game();
+
+/*
+once loaded start game (set score to 0-0)
+in game, just click to pick the things and the messages will update
+after game ends, play again button appears and you can click it to start another game
+that's all I guess for now
+*/
