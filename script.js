@@ -7,6 +7,11 @@ function getComputerChoice(){
     } 
 }
 
+function getPlayerChoice(){ //get choice from document, returns string
+
+}
+
+
 function playRound(playerSelection, computerSelection){
     let playerStr = playerSelection.toLowerCase();
     if (playerStr === "rock"){
@@ -47,7 +52,10 @@ function playRound(playerSelection, computerSelection){
 function game(){
     playerScore = 0;
     computerScore = 0;
+    playerScoreElement.textContent = playerScore;
+    computerScoreElement.textContent = computerScore;
     console.log("Welcome to the arena!")
+
     while(playerScore < 3 && computerScore < 3){
         let playerSelection = prompt("Please choose rock, paper or scissors: ") //defaults to scissors if wrong choice
         let computerSelection = getComputerChoice();
@@ -55,9 +63,11 @@ function game(){
         console.log(roundResult[0]);
         if (roundResult[1] == 1){
             playerScore++;
+            playerScoreElement.textContent = playerScore;
         }
         else if (roundResult[1] == 2){
             computerScore++;
+            computerScoreElement.textContent = computerScore;
         }
     }
     if (playerScore == 3){
@@ -69,6 +79,10 @@ function game(){
 }
 
 
+let playerScoreElement = document.querySelector('.playerScore');
+let computerScoreElement = document.querySelector('.computerScore');
+let windowElements = document.querySelectorAll('.window');
+let messageElement = document.querySelector('messageSection');
 
 game();
 
