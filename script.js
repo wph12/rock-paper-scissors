@@ -11,6 +11,13 @@ function endGame(outcome){
     //display victory or defeat message depending on win or lose
     //displays button to click to restart
     ongoingGame = 0;
+    restartButtonElement.classList.toggle('inactive');
+    if(outcome === 0){
+        messageElement.textContent = (`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
+    }
+    else{
+        messageElement.textContent = (`Victory! You have won with a score of 3 - ${computerScore}`);
+    }
 }
 
 
@@ -79,21 +86,16 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
+    console.log("Welcome to the arena!");
     ongoingGame = 1;
+    playerScore = 0;
+    computerScore = 0;
     messageElement.textContent = "Please make a selection to start a game. First to reach 3 points wins!"
-
-    
     playerScoreElement.textContent = playerScore;
     computerScoreElement.textContent = computerScore;
-    messageElement.textContent = ("Welcome to the arena!");
 
 
-    windowElements.forEach(window => {
-        window.addEventListener("click", e => {
-            //messageElement.textContent = (e.target.id);
-            playRound(e.target.id, getComputerChoice());
-        })
-    })
+    
 
     // while(playerScore < 3 && computerScore < 3){
     //     let playerSelection = prompt("Please choose rock, paper or scissors: ") //defaults to scissors if wrong choice
@@ -116,15 +118,31 @@ function game(){
     //     messageElement.textContent = (`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
     // }
 }
-
+//basically main
 var playerScoreElement = document.querySelector('.playerScore');
 var computerScoreElement = document.querySelector('.computerScore');
 var windowElements = document.querySelectorAll('.window');
 var messageElement = document.querySelector('.messageSection');
+var restartButtonElement = document.querySelector('.button');
+
 var playerScore = 0;
 var computerScore = 0;
 var ongoingGame = 0;
+
+windowElements.forEach(window => {
+    window.addEventListener("click", e => {
+        //messageElement.textContent = (e.target.id);
+        playRound(e.target.id, getComputerChoice());
+    })
+});
+restartButtonElement.addEventListener('click', () => {
+    restartButtonElement.classList.toggle('inactive');
+    game();
+});
+
 game();
+
+
 
 /*
 once loaded start game (set score to 0-0)

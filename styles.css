@@ -57,3 +57,6 @@ body{
     border-radius: 16px;
 }
 
+.inactive{
+    display: none;
+}
