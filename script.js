@@ -7,13 +7,35 @@ function getComputerChoice(){
     } 
 }
 
-function increaseScore(scoreElement){
-    //needs to check for end of game
-    currScore = parseInt(scoreElement.textContent);
-    scoreElement.textContent = currScore + 1;
+function endGame(outcome){
+    //display victory or defeat message depending on win or lose
+    //displays button to click to restart
+    ongoingGame = 0;
 }
 
-function playRound(playerSelection, computerSelection,messageElement,playerScoreElement,computerScoreElement){
+
+function increaseScore(outcome){
+    if (outcome === 1){
+        playerScore += 1;
+        playerScoreElement.textContent = playerScore;
+        if (playerScore >= 3){
+            endGame(1);
+        }
+    }
+    else{
+        computerScore += 1;
+        computerScoreElement.textContent = computerScore;
+        if (computerScore >= 3){
+            endGame(0);
+        }
+    }
+}
+
+
+function playRound(playerSelection, computerSelection){
+    if (ongoingGame === 0){
+        return;
+    }
     let playerStr = playerSelection.toLowerCase();
     if (playerStr === "rock"){
         if(computerSelection === "rock"){
@@ -21,11 +43,11 @@ function playRound(playerSelection, computerSelection,messageElement,playerScore
         }
         else if (computerSelection === "paper"){
             messageElement.textContent = ("You lose! Paper beats rock."); 
-            increaseScore(computerScoreElement);
+            increaseScore(0);
         }
         else{
             messageElement.textContent = ("You win! Rock beats scissors.");
-            increaseScore(playerScoreElement);
+            increaseScore(1);
         }
     }
     else if (playerStr === "paper"){
@@ -34,11 +56,11 @@ function playRound(playerSelection, computerSelection,messageElement,playerScore
         }
         else if (computerSelection === "scissors"){
             messageElement.textContent = ("You lose! Scissors beat paper.") 
-            increaseScore(computerScoreElement);
+            increaseScore(0);
         }
         else{
             messageElement.textContent = ("You win! Paper beats rock.") 
-            increaseScore(playerScoreElement);
+            increaseScore(1);
         }
     }
     else {
@@ -47,32 +69,29 @@ function playRound(playerSelection, computerSelection,messageElement,playerScore
         }
         else if (computerSelection === "rock"){
             messageElement.textContent = ("You lose! Rock beat scissors.") 
-            increaseScore(computerScoreElement);
+            increaseScore(0);
         }
         else{
             messageElement.textContent = ("You win! Scissors beats paper.")
-            increaseScore(playerScoreElement);
+            increaseScore(1);
         }
     }
 }
 
 function game(){
-    let playerScoreElement = document.querySelector('.playerScore');
-    let computerScoreElement = document.querySelector('.computerScore');
-    let windowElements = document.querySelectorAll('.window');
-    let messageElement = document.querySelector('.messageSection');
+    ongoingGame = 1;
     messageElement.textContent = "Please make a selection to start a game. First to reach 3 points wins!"
 
-    playerScore = 0;
-    computerScore = 0;
+    
     playerScoreElement.textContent = playerScore;
     computerScoreElement.textContent = computerScore;
     messageElement.textContent = ("Welcome to the arena!");
 
+
     windowElements.forEach(window => {
         window.addEventListener("click", e => {
             //messageElement.textContent = (e.target.id);
-            playRound(e.target.id, getComputerChoice(),messageElement,playerScoreElement,computerScoreElement);
+            playRound(e.target.id, getComputerChoice());
         })
     })
 
@@ -98,8 +117,13 @@ function game(){
     // }
 }
 
-
-
+var playerScoreElement = document.querySelector('.playerScore');
+var computerScoreElement = document.querySelector('.computerScore');
+var windowElements = document.querySelectorAll('.window');
+var messageElement = document.querySelector('.messageSection');
+var playerScore = 0;
+var computerScore = 0;
+var ongoingGame = 0;
 game();
 
 /*
