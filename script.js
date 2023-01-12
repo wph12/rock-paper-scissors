@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection,messageElement,playerScore
         if(computerSelection === "paper"){
             messageElement.textContent = ("Tie! Both chose paper.");
         }
-        else if (computerSelection === "Scissors"){
+        else if (computerSelection === "scissors"){
             messageElement.textContent = ("You lose! Scissors beat paper.") 
             increaseScore(computerScoreElement);
         }
@@ -45,7 +45,7 @@ function playRound(playerSelection, computerSelection,messageElement,playerScore
         if(computerSelection === "scissors"){
             messageElement.textContent = ("Tie! Both chose scissors.")
         }
-        else if (computerSelection === "Scissors"){
+        else if (computerSelection === "rock"){
             messageElement.textContent = ("You lose! Rock beat scissors.") 
             increaseScore(computerScoreElement);
         }
