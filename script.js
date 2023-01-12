@@ -7,39 +7,51 @@ function getComputerChoice(){
     } 
 }
 
-function playRound(playerSelection, computerSelection){
+function increaseScore(scoreElement){
+    //needs to check for end of game
+    currScore = parseInt(scoreElement.textContent);
+    scoreElement.textContent = currScore + 1;
+}
+
+function playRound(playerSelection, computerSelection,messageElement,playerScoreElement,computerScoreElement){
     let playerStr = playerSelection.toLowerCase();
     if (playerStr === "rock"){
         if(computerSelection === "rock"){
-            console.log("Tie! Both chose rock."); 
+            messageElement.textContent = ("Tie! Both chose rock."); 
         }
         else if (computerSelection === "paper"){
-            console.log("You lose! Paper beats rock."); 
+            messageElement.textContent = ("You lose! Paper beats rock."); 
+            increaseScore(computerScoreElement);
         }
         else{
-            console.log("You win! Rock beats scissors.");
+            messageElement.textContent = ("You win! Rock beats scissors.");
+            increaseScore(playerScoreElement);
         }
     }
     else if (playerStr === "paper"){
         if(computerSelection === "paper"){
-            console.log("Tie! Both chose paper.");
+            messageElement.textContent = ("Tie! Both chose paper.");
         }
         else if (computerSelection === "Scissors"){
-            console.log("You lose! Scissors beat paper.") 
+            messageElement.textContent = ("You lose! Scissors beat paper.") 
+            increaseScore(computerScoreElement);
         }
         else{
-            console.log("You win! Paper beats rock.") 
+            messageElement.textContent = ("You win! Paper beats rock.") 
+            increaseScore(playerScoreElement);
         }
     }
     else {
         if(computerSelection === "scissors"){
-            console.log("Tie! Both chose scissors.")
+            messageElement.textContent = ("Tie! Both chose scissors.")
         }
         else if (computerSelection === "Scissors"){
-            console.log("You lose! Rock beat scissors.") 
+            messageElement.textContent = ("You lose! Rock beat scissors.") 
+            increaseScore(computerScoreElement);
         }
         else{
-            console.log("You win! Scissors beats paper.")
+            messageElement.textContent = ("You win! Scissors beats paper.")
+            increaseScore(playerScoreElement);
         }
     }
 }
@@ -48,18 +60,19 @@ function game(){
     let playerScoreElement = document.querySelector('.playerScore');
     let computerScoreElement = document.querySelector('.computerScore');
     let windowElements = document.querySelectorAll('.window');
-    let messageElement = document.querySelector('messageSection');
+    let messageElement = document.querySelector('.messageSection');
+    messageElement.textContent = "Please make a selection to start a game. First to reach 3 points wins!"
 
     playerScore = 0;
     computerScore = 0;
     playerScoreElement.textContent = playerScore;
     computerScoreElement.textContent = computerScore;
-    console.log("Welcome to the arena!");
+    messageElement.textContent = ("Welcome to the arena!");
 
     windowElements.forEach(window => {
         window.addEventListener("click", e => {
-            //console.log(e.target.id);
-            playRound(e.target.id, getComputerChoice());
+            //messageElement.textContent = (e.target.id);
+            playRound(e.target.id, getComputerChoice(),messageElement,playerScoreElement,computerScoreElement);
         })
     })
 
@@ -67,7 +80,7 @@ function game(){
     //     let playerSelection = prompt("Please choose rock, paper or scissors: ") //defaults to scissors if wrong choice
     //     let computerSelection = getComputerChoice();
     //     let roundResult = playRound(playerSelection,computerSelection);
-    //     console.log(roundResult[0]);
+    //     messageElement.textContent = (roundResult[0]);
     //     if (roundResult[1] == 1){
     //         playerScore++;
     //         playerScoreElement.textContent = playerScore;
@@ -78,10 +91,10 @@ function game(){
     //     }
     // }
     // if (playerScore == 3){
-    //     console.log(`Victory! You have won with a score of 3 - ${computerScore}`);
+    //     messageElement.textContent = (`Victory! You have won with a score of 3 - ${computerScore}`);
     // }
     // else if (computerScore == 3){
-    //     console.log(`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
+    //     messageElement.textContent = (`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
     // }
 }
 
