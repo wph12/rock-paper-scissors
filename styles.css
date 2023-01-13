@@ -53,10 +53,16 @@ body{
     max-height: 200px;
     min-height: 200px;
     border-style: solid;
-    border-color: #3882F6;
+    border-color: black;
     border-radius: 16px;
+    margin-bottom: 16px;
 }
 
 .inactive{
     display: none;
+}
+
+.picture{
+    height: 200px;
+    width: 200px;
 }
