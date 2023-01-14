@@ -123,8 +123,6 @@ game();
 
 /*
 todo: edit styling: 
-- maybe buttons have border and effect when hovered like the drum kit 
-- make buttons have click effect
 - display player and computer afterchoices? 
 - transition for score update with border
 - update play again button to look nice
