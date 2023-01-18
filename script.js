@@ -14,7 +14,7 @@ function endGame(outcome){
         messageElement.textContent = (`You have lost with a score of ${playerScore} - 3. Better luck next time!`);
     }
     else{
-        messageElement.textContent = (`Victory! You have won with a score of 3 - ${computerScore}`);
+        messageElement.textContent = (`Victory! You have won with a score of 3 - ${computerScore}.`);
     }
 }
 
@@ -41,6 +41,18 @@ function playRound(playerSelection, computerSelection){
     if (ongoingGame === 0){
         return;
     }
+
+    computerPaper.classList.add('inactive');
+    computerRock.classList.add('inactive');
+    computerScissors.classList.add('inactive');
+
+
+    switch(computerSelection){
+        case "rock": computerRock.classList.remove('inactive');
+        case "paper": computerPaper.classList.remove('inactive');
+        case "scissors": computerScissors.classList.remove('inactive');
+    }
+
     let playerStr = playerSelection.toLowerCase();
     if (playerStr === "rock"){
         if(computerSelection === "rock"){
@@ -88,12 +100,14 @@ function game(){
     ongoingGame = 1;
     playerScore = 0;
     computerScore = 0;
+
+    computerPaper.classList.add('inactive');
+    computerRock.classList.add('inactive');
+    computerScissors.classList.add('inactive');
+
     messageElement.textContent = "Please make a selection to start a game. First to reach 3 points wins!"
     playerScoreElement.textContent = playerScore;
     computerScoreElement.textContent = computerScore;
-
-
-    
 
 }
 //basically main
@@ -106,6 +120,10 @@ var restartButtonElement = document.querySelector('.button');
 var playerScore = 0;
 var computerScore = 0;
 var ongoingGame = 0;
+
+var computerRock = document.querySelector('#computerRock');
+var computerPaper = document.querySelector('#computerPaper');
+var computerScissors = document.querySelector('#computerScissors');
 
 windowElements.forEach(window => {
     window.addEventListener("click", e => {

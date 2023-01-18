@@ -70,10 +70,22 @@ body{
 .window:hover {
     transform: scale(1.1);
     border-color: cyan;
-    box-shadow: 0 0 1rem cyan;
+    box-shadow: 0 0 0.5rem cyan;
 }
 
 .window:active{
     transform: scale(0.99);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.windowContainer{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+
+.computerChoice{
+    font-weight: normal;
+    color: #F02004;
 }
