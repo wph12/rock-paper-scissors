@@ -22,6 +22,7 @@ function endGame(outcome){
 function increaseScore(outcome){
     if (outcome === 1){
         playerScore += 1;
+        playerScoreElement.classList.add('playerScoreUpdate');
         playerScoreElement.textContent = playerScore;
         if (playerScore >= 3){
             endGame(1);
@@ -29,6 +30,7 @@ function increaseScore(outcome){
     }
     else{
         computerScore += 1;
+        computerScoreElement.classList.add('computerScoreUpdate')
         computerScoreElement.textContent = computerScore;
         if (computerScore >= 3){
             endGame(0);
@@ -41,20 +43,25 @@ function playRound(playerSelection, computerSelection){
     if (ongoingGame === 0){
         return;
     }
+    playerScoreElement.classList.remove('playerScoreUpdate');
+    computerScoreElement.classList.remove('computerScoreUpdate');
 
     computerPaper.classList.add('inactive');
     computerRock.classList.add('inactive');
     computerScissors.classList.add('inactive');
 
-
-    switch(computerSelection){
-        case "rock": computerRock.classList.remove('inactive');
-        case "paper": computerPaper.classList.remove('inactive');
-        case "scissors": computerScissors.classList.remove('inactive');
+    if (computerSelection == "rock"){
+        computerRock.classList.remove('inactive');
+    }
+    if (computerSelection == "paper"){
+        computerPaper.classList.remove('inactive');
+    }
+    if (computerSelection == "scissors"){
+        computerScissors.classList.remove('inactive');
     }
 
     let playerStr = playerSelection.toLowerCase();
-    if (playerStr === "rock"){
+    if (playerStr == "rock"){
         if(computerSelection === "rock"){
             messageElement.textContent = ("Tie! Both chose rock."); 
         }
@@ -67,7 +74,7 @@ function playRound(playerSelection, computerSelection){
             increaseScore(1);
         }
     }
-    else if (playerStr === "paper"){
+    else if (playerStr == "paper"){
         if(computerSelection === "paper"){
             messageElement.textContent = ("Tie! Both chose paper.");
         }
@@ -81,7 +88,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
     else {
-        if(computerSelection === "scissors"){
+        if(computerSelection == "scissors"){
             messageElement.textContent = ("Tie! Both chose scissors.")
         }
         else if (computerSelection === "rock"){
@@ -104,6 +111,10 @@ function game(){
     computerPaper.classList.add('inactive');
     computerRock.classList.add('inactive');
     computerScissors.classList.add('inactive');
+
+    playerScoreElement.classList.remove('playerScoreUpdate');
+    computerScoreElement.classList.remove('computerScoreUpdate');
+
 
     messageElement.textContent = "Please make a selection to start a game. First to reach 3 points wins!"
     playerScoreElement.textContent = playerScore;
@@ -141,7 +152,6 @@ game();
 
 /*
 todo: edit styling: 
-- display player and computer afterchoices? 
 - transition for score update with border
 - update play again button to look nice
 */
