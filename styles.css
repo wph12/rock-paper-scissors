@@ -8,7 +8,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 64px;
+    gap: 48px;
 }
 
 .topSection{
